@@ -1,0 +1,3 @@
+SELECT * FROM users WHERE name = 'Diego'
+    knex('users').where('name', 'Diego).select('*')
+
