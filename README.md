@@ -1,14 +1,11 @@
 
+![GitHub](https://img.shields.io/github/license/x0n4d0/ecoleta) ![Node_Badge](https://img.shields.io/badge/node-12.17.0-green) ![Npm_Badge](https://img.shields.io/badge/npm-6.14.4-red) ![React_Badge](https://img.shields.io/badge/web-react-blue) ![React_Native_Badge](https://img.shields.io/badge/mobile-react%20native-blueviolet) ![NodeJS_Badge](https://img.shields.io/badge/server-nodejs-important) [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.png?v=101)](https://github.com/ellerbrock/typescript-badges/)
+  <a href="https://rocketseat.com.br">
+    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%237519C1">
+  </a>
 
 
-Ecoleta - a conexão entre empresas e entidades de coleta de resíduos (orgânicos e inorgânicos), providenciando um descarte ecológico e facilitando processos de reutilização e reciclagem.
-
-![](ecoleta.gif?raw=true "Visualização da aplicação web")
-
-
-<h4 align="center"> 
-	Em construção 🚀
-</h4>
+**Ecoleta** - a conexão entre empresas e entidades de coleta de resíduos (orgânicos e inorgânicos), providenciando um descarte ecológico e facilitando processos de reutilização e reciclagem. 
 
 <p align="center">
   <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -18,20 +15,28 @@ Ecoleta - a conexão entre empresas e entidades de coleta de resíduos (orgânic
   <a href="#page_facing_up-licença">Licença</a>
 </p>
 
+![](ecoleta.gif?raw=true "Visualização da aplicação web")
+
+
+<h4 align="center"> 
+	Em construção :rocket:
+</h4>
+
+
 ## **:computer: TECNOLOGIAS**
 
-#### **Front-end** ([React](https://pt-br.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/))
+#### **FRONT-END** ([React](https://pt-br.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/))
 
-  - **[Axios](https://github.com/axios/axios)**
-  - **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
-  - **[React Icons](https://react-icons.github.io/react-icons/)**
+  - [Axios](https://github.com/axios/axios)
+  - [React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
+  - [React Icons](https://react-icons.github.io/react-icons/)
+  - [React Leaflet](https://react-leaflet.js.org/en/)
+  - [Leaflet](https://react-leaflet.js.org/en/)
   <!-- - **[React Dropzone][react_dropzone]** -->
-  - **[React Leaflet](https://react-leaflet.js.org/en/)**
-  - **[Leaflet](https://react-leaflet.js.org/en/)**
-  \ <kbd>[package.json](./web/package.json)</kbd>
+   <kbd>[package.json](./web/package.json)</kbd>
 
 
-#### **Back-end** ([NodeJS](https://nodejs.org/en/) + [TypeScript](https://www.typescriptlang.org/))
+#### **BACK-END** ([NodeJS](https://nodejs.org/en/) + [TypeScript](https://www.typescriptlang.org/))
 
   - **[SQLite3](https://github.com/mapbox/node-sqlite3)**
   - **[Ts-node](https://github.com/TypeStrong/ts-node)**
@@ -42,12 +47,11 @@ Ecoleta - a conexão entre empresas e entidades de coleta de resíduos (orgânic
   <!-- - **[Multer][multer]** -->
   <!-- - **[Celebrate][celebrate]** -->
   <!-- - **[Joi][joi]** -->
+  <kbd>[package.json](./server/package.json)</kbd>
 
-  \ <kbd>[package.json](./server/package.json)</kbd>
+#### **MOBILE** ([React Native](https://reactnative.dev/) + [TypeScript](https://www.typescriptlang.org/))
 
-#### **Mobile** ([React Native](https://reactnative.dev/) + [TypeScript](https://www.typescriptlang.org/))
-
-Em construção
+Em construção :rocket:
   <!-- - **[Expo][expo]**
   - **[Expo Google Fonts][expo_google_fonts]**
   - **[React Navigation][react_navigation]**
@@ -62,7 +66,7 @@ Em construção
 
 ## **:hammer: FERRAMENTAS**
 
-- Layout: **[Figma](https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster))** &rarr; 
+- Layout: **[Figma](https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster))**
 - API: **[IBGE API](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1)** &rarr; **<kbd>[API de UFs](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-UFs-estadosGet)</kbd>**, **<kbd>[API de Municípios](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-Municipios-estadosUFMunicipiosGet)</kbd>** 
 - API Tests: **[Insomnia](https://insomnia.rest/)**
 - Ícones: **[Feather Icons](https://feathericons.com/)**, **[Font Awesome](https://fontawesome.com/)**
@@ -98,7 +102,13 @@ $ npm install
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev:server
 
-# Acesse http://localhost:3333 (o servidor inciará na porta:3333)  
+Acesse [http://localhost:3333](http://localhost:3333) (o servidor inciará na porta:3333)  
+
+# Instanciando o banco de dados:
+$ npm run knex:migrate
+
+# Povoando o banco de dados (seeds):
+$ npm run knex:seed
 
 ```
 
@@ -115,7 +125,7 @@ $ npm install
 # Execute a aplicação em modo de desenvolvimento
 $ npm run start
 
-# Acesse http://localhost:3000 - (a aplicação será aberta na porta:3000) 
+Acesse [http://localhost:3000](http://localhost:3000) - (a aplicação será aberta na porta:3000) 
 
 ```
 
@@ -138,6 +148,6 @@ Em construção
 
 
 ## **:page_facing_up: LICENÇA**
-Projeto sob a licença MIT **<kbd>[LICENSE](https://github.com/Rocketseat/nlw-01-booster/blob/master/LICENSE.md)</kbd>**
+Licença MIT &rarr; **<kbd>[LICENSE](https://github.com/Rocketseat/nlw-01-booster/blob/master/LICENSE.md)</kbd>**
 
-Desenvolvido durante a NLW - Next Level Week, [RocketSeat](https://rocketseat.com.br/)
+Projeto Open Source desenvolvido Desenvolvido durante a NLW - Next Level Week, [RocketSeat](https://rocketseat.com.br/)
