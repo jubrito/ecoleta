@@ -1,11 +1,5 @@
 
-![Node_Badge](https://img.shields.io/badge/node-12.18.1-brightgreen)  
-![React_Badge](https://img.shields.io/badge/web-react-ff69b4)  
-![React_Native_Badge](https://img.shields.io/badge/mobile-react%20native-blueviolet)  
-![Npm_Badge](https://img.shields.io/badge/npm-6.14.5-red)  
-![TypeScript](https://img.shields.io/badge/%3C%2F%3E-typescript-blue)  
-![languages](https://img.shields.io/badge/languages-4-9cf)  
-![GitHub](https://img.shields.io/github/license/x0n4d0/ecoleta)  
+![Node_Badge](https://img.shields.io/badge/node-12.18.1-brightgreen)  ![React_Badge](https://img.shields.io/badge/web-react-ff69b4)  ![React_Native_Badge](https://img.shields.io/badge/mobile-react%20native-blueviolet)  ![Npm_Badge](https://img.shields.io/badge/npm-6.14.5-red)  ![TypeScript](https://img.shields.io/badge/%3C%2F%3E-typescript-blue)  ![languages](https://img.shields.io/badge/languages-4-9cf)  ![GitHub](https://img.shields.io/github/license/x0n4d0/ecoleta)  
   <a href="https://rocketseat.com.br">
     <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%237519C1">
   </a>
