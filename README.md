@@ -1,11 +1,11 @@
-
-![GitHub](https://img.shields.io/github/license/x0n4d0/ecoleta) ![Node_Badge](https://img.shields.io/badge/node-12.17.0-green) ![Npm_Badge](https://img.shields.io/badge/npm-6.14.4-red) ![React_Badge](https://img.shields.io/badge/web-react-blue) ![React_Native_Badge](https://img.shields.io/badge/mobile-react%20native-blueviolet) ![NodeJS_Badge](https://img.shields.io/badge/server-nodejs-important) [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.png?v=101)](https://github.com/ellerbrock/typescript-badges/)
+![Node_Badge](https://img.shields.io/badge/node-12.18.1-brightgreen) ![React_Badge](https://img.shields.io/badge/web-react-ff69b4) ![React_Native_Badge](https://img.shields.io/badge/mobile-react%20native-blueviolet) ![Npm_Badge](https://img.shields.io/badge/npm-6.14.5-red) ] ![TypeScript](https://img.shields.io/badge/%3C%2F%3E-typescript-blue) ![GitHub](https://img.shields.io/github/license/x0n4d0/ecoleta) 
   <a href="https://rocketseat.com.br">
     <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%237519C1">
   </a>
 
-
-**Ecoleta** - a conexão entre empresas e entidades de coleta de resíduos (orgânicos e inorgânicos), providenciando um descarte ecológico e facilitando processos de reutilização e reciclagem. 
+<p align="center">
+<strong>Ecoleta</strong> - a conexão entre empresas e entidades de coleta de resíduos (orgânicos e inorgânicos), providenciando um descarte ecológico e facilitando processos de reutilização e reciclagem. 
+</p>
 
 <p align="center">
   <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -14,6 +14,7 @@
   <a href="#octocat-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#page_facing_up-licença">Licença</a>
 </p>
+
 
 ![](ecoleta.gif?raw=true "Visualização da aplicação web")
 
@@ -64,6 +65,7 @@ Em construção :rocket:
 
   \* <kbd>[package.json](./sources/mobile/package.json)</kbd> -->
 
+
 ## **:hammer: FERRAMENTAS**
 
 - Layout: **[Figma](https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster))**
@@ -75,6 +77,7 @@ Em construção :rocket:
 - Editor: **[Visual Studio Code](https://code.visualstudio.com/)** &rarr; Extensions: **<kbd>[SQLite3](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)</kbd>**
 <!-- - Markdown: **[StackEdit][stackedit]**, **<kbd>[Markdown Emoji][markdown_emoji]</kbd>**
 - Commit Conventional: **[Commitlint][commitlint]** -->
+
 
 
 ## **:woman_technologist: RODANDO A APLICAÇÃO**
@@ -101,9 +104,11 @@ $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev:server
+```
 
 Acesse [http://localhost:3333](http://localhost:3333) (o servidor inciará na porta:3333)  
 
+```sh
 # Instanciando o banco de dados:
 $ npm run knex:migrate
 
@@ -125,13 +130,14 @@ $ npm install
 # Execute a aplicação em modo de desenvolvimento
 $ npm run start
 
+```
 Acesse [http://localhost:3000](http://localhost:3000) - (a aplicação será aberta na porta:3000) 
 
-```
 
 ### Mobile 
 
 Em construção
+
 
 
 ## **:octocat: COMO CONTRIBUIR**
@@ -145,6 +151,7 @@ Em construção
   - Faça um *push* para a sua *branch*: `git push origin feature/minhaFeature`;
   - Abra um *pull request* no repositório onde o *fork* foi feito. Após o *merge* suas alterações irão fazer parte do projeto;
   - Após o *merge* da sua pull request for feito, sua *branch* poderá ser deletada.
+
 
 
 ## **:page_facing_up: LICENÇA**
