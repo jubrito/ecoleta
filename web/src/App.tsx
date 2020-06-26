@@ -1,15 +1,17 @@
+// COMPONENTE, PROPRIEDADE, ESTADO E IMUTABILIDADE
+
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import Routes from './routes' 
+
+
+// JSX: Sintaxe de XML dentro do JavaScript (.tsx: TypeScript com JSX)
+function App()  {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Hello World</h1>
-      </header>
-    </div>
+        <div>
+          <Routes />
+        </div>
   );
 }
 
