@@ -11,43 +11,43 @@ Ecoleta - a conexão entre empresas e entidades de coleta de resíduos (orgânic
 </h4>
 
 <p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-ferramentas">Ferramentas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-rodando-a-aplicacao">Rodando a aplicação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#hammer-ferramentas">Ferramentas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#woman_technologist-rodando-a-aplica%C3%A7%C3%A3o">Rodando a aplicação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#octocat-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#page_facing_up-licença">Licença</a>
 </p>
 
 ## **:computer: TECNOLOGIAS**
 
-#### **Front-end** ([React][react] + [TypeScript][typescript])
+#### **Front-end** ([React](https://pt-br.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/))
 
-  - **[Axios][axios]**
-  - **[React Router Dom][react_router_dom]**
-  - **[React Icons][react_icons]**
-  - **[React Dropzone][react_dropzone]**
-  - **[React Leaflet][react_leaflet]**
-  - **[Leaflet][leaflet]**
-  \* <kbd>[package.json](./sources/website/package.json)</kbd>
+  - **[Axios](https://github.com/axios/axios)**
+  - **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+  - **[React Icons](https://react-icons.github.io/react-icons/)**
+  <!-- - **[React Dropzone][react_dropzone]** -->
+  - **[React Leaflet](https://react-leaflet.js.org/en/)**
+  - **[Leaflet](https://react-leaflet.js.org/en/)**
+  \ <kbd>[package.json](./web/package.json)</kbd>
 
 
-#### **Back-end** ([NodeJS][node] + [TypeScript][typescript])
+#### **Back-end** ([NodeJS](https://nodejs.org/en/) + [TypeScript](https://www.typescriptlang.org/))
 
-  - **[SQLite][sqlite3]**
-  - **[ts-node][tsnode]**
-  - **[KnexJS][knex]**
-  - **[Express][express]**
-  - **[CORS][cors]**
+  - **[SQLite3](https://github.com/mapbox/node-sqlite3)**
+  - **[Ts-node](https://github.com/TypeStrong/ts-node)**
+  - **[KnexJS](http://knexjs.org/)**
+  - **[Express](https://expressjs.com/)**
+  - **[CORS](https://expressjs.com/en/resources/middleware/cors.html)**
   <!-- - **[dotENV][dotenv]** -->
   <!-- - **[Multer][multer]** -->
   <!-- - **[Celebrate][celebrate]** -->
   <!-- - **[Joi][joi]** -->
 
-  \* <kbd>[package.json](./sources/server/package.json)</kbd>
+  \ <kbd>[package.json](./server/package.json)</kbd>
 
-#### **Mobile** ([React Native][react_native] + [TypeScript][typescript])
+#### **Mobile** ([React Native](https://reactnative.dev/) + [TypeScript](https://www.typescriptlang.org/))
 
-    Em construção
+Em construção
   <!-- - **[Expo][expo]**
   - **[Expo Google Fonts][expo_google_fonts]**
   - **[React Navigation][react_navigation]**
@@ -60,20 +60,20 @@ Ecoleta - a conexão entre empresas e entidades de coleta de resíduos (orgânic
 
   \* <kbd>[package.json](./sources/mobile/package.json)</kbd> -->
 
-## **FERRAMENTAS**
+## **:hammer: FERRAMENTAS**
 
 - Layout: **[Figma](https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster))** &rarr; 
-- API: **[IBGE API][ibge_api]** &rarr; **<kbd>[API de UFs][ibge_api_ufs]</kbd>**, **<kbd>[API de Municípios][ibge_api_municipios]</kbd>** 
-- API Tests: **[Insomnia][insomnia]**
-- Ícones: **[Feather Icons][feather_icons]**, **[Font Awesome][font_awesome]**
-- Fontes: **[Ubuntu][font_ubuntu]**, **[Roboto][font_roboto]**
-- Maps: **[Leaflet][leaflet]**
-- Editor: **[Visual Studio Code][vscode]** &rarr; Extensions: **<kbd>[SQLite][vscode_sqlite_extension]</kbd>**
+- API: **[IBGE API](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1)** &rarr; **<kbd>[API de UFs](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-UFs-estadosGet)</kbd>**, **<kbd>[API de Municípios](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-Municipios-estadosUFMunicipiosGet)</kbd>** 
+- API Tests: **[Insomnia](https://insomnia.rest/)**
+- Ícones: **[Feather Icons](https://feathericons.com/)**, **[Font Awesome](https://fontawesome.com/)**
+- Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**, **[Ubuntu](https://fonts.google.com/specimen/Ubuntu)**
+- Maps: **[Leaflet](https://react-leaflet.js.org/en/)**
+- Editor: **[Visual Studio Code](https://code.visualstudio.com/)** &rarr; Extensions: **<kbd>[SQLite3](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)</kbd>**
 <!-- - Markdown: **[StackEdit][stackedit]**, **<kbd>[Markdown Emoji][markdown_emoji]</kbd>**
 - Commit Conventional: **[Commitlint][commitlint]** -->
 
 
-## **RODANDO A APLICAÇÃO**
+## **:woman_technologist: RODANDO A APLICAÇÃO**
 
 Requisitos: [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), Editor ([VSCode](https://code.visualstudio.com/))
 
@@ -107,7 +107,7 @@ $ npm run dev:server
 
 ```sh
 # Acesse a pasta do website no cmd/terminal
-$ cd wen
+$ cd web
 
 # Instalando as dependências do website
 $ npm install
@@ -137,7 +137,7 @@ Em construção
   - Após o *merge* da sua pull request for feito, sua *branch* poderá ser deletada.
 
 
-## **:page_facing_up: LICENÇA **
-**Licença**: Projeto sob a licença MIT **<kbd>[LICENSE](https://github.com/Rocketseat/nlw-01-booster/blob/master/LICENSE.md)</kbd>**
+## **:page_facing_up: LICENÇA**
+Projeto sob a licença MIT **<kbd>[LICENSE](https://github.com/Rocketseat/nlw-01-booster/blob/master/LICENSE.md)</kbd>**
 
 Desenvolvido durante a NLW - Next Level Week, [RocketSeat](https://rocketseat.com.br/)
