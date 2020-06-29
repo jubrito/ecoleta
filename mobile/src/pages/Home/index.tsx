@@ -2,9 +2,17 @@ import React from 'react';
 // TouchableHighlight, Touchable: botões
 // npm install @react-navigation/nativeimageBackground: View que aceita background
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'; 
-// import {} from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler'; // botão retangular com cor de fundo
+import { Feather as Icon } from '@expo/vector-icons'; // Icones
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+  const navigation = useNavigation(); 
+
+  function handleNavigateToPoints() {
+    navigation.navigate('Points');  //navigation tem a função navigate pra navegarmos de uma tela pra outra e colocamos essa funçaõ no onePress do botão 
+  }
+
     return (
         <ImageBackground 
             source={require('../../assets/home-background.png')} 
@@ -19,7 +27,16 @@ const Home = () => {
             </View>
 
             <View style={styles.footer}>
-
+              <RectButton style={styles.button} onPress={handleNavigateToPoints} /* onPress = onClick*/> 
+                <View style ={styles.buttonIcon}>
+                  <Text>
+                    <Icon name="arrow-right" color="#fff" size={24} />
+                  </Text>
+                </View>
+                <Text style ={styles.buttonText}>
+                    Entrar
+                </Text>
+              </RectButton>
             </View>
         </ImageBackground>
     );

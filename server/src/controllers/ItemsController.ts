@@ -14,7 +14,10 @@ class ItemsController {
             return {
                 id: item.id,
                 title: item.title,
-                image_url: `http://localhost:3333/uploads/${item.image}`,
+                // Para rodarmos na nossa máquina
+                // image_url: `http://localhost:3333/uploads/${item.image}`,
+                // Para rodarmos no Expo (Mobile), pegamos o link gerado no localhost:19002 do expo (exp://192.168.15.15:19000)
+                image_url: `http://192.168.15.15:3333/uploads/${item.image}`,
             };
         });
     
