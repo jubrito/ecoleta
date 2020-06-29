@@ -1,95 +1,184 @@
-import React from 'react';
-import Constants from 'expo-constants';
+import React , { useState, useEffect }from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Alert } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg';// carregar svg de um endereço externo 
+import api from '../../services/api';
+import * as Location from 'expo-location';
 
+// Sempre que armazenamos um vetor em um estado, precisamos dizer qual o formato desse vetor através de uma interface
+interface Item {
+  id: number;
+  title: string;
+  image_url: string;
+}
 
-
+// colocar apenas o que vamos utilizar
+interface Point {
+  id: number;
+  name: string;
+  image: string;
+  latitude: number;
+  longitude: number;
+}
 
 const Points = () => {
 
-    const navigation = useNavigation();
-    function handleNavigateBack() {
-        navigation.goBack();
+  // ESTADO dos pontos de coletas buscados na API
+  const [ points, setPoints ] = useState<Point[]>([]);
+
+  // ESTADO de itens da PI
+  const [ items, setItems ] = useState<Item[]>([]); // como é mais de um, armezena em um vetor do tipo Item
+
+  // ESTADO de itens selecionados pelo usuário
+  const [ selectedItems, setSelectedItems ] = useState<number[]>([]); // array de numeros (dos ids dos itens selecionados)
+
+  // ESTADO da posição inicial do usuário
+  const [ initialPosition, setInitialPosition ] = useState<[number, number]>([0, 0]); // vetor de latitude e longitude (numeros)
+
+  const navigation = useNavigation();
+
+  /* DEFININDO O PONTO INICIAL DO MAPA COMO A LOCALIZAÇÃO DO USUÁRIO */
+  useEffect(() => {
+    // criada para podermos utilizar ASYNC AWAIT
+    async function loadPosition() {
+      // Pedir permissões pro usuário para acessarmos a localização dele
+      const { status } = await Location.requestPermissionsAsync();
+
+      if (status !== 'granted') { // se o usuário não deu permissão
+        Alert.alert('Ooooops...', 'Precisamos de sua permissão para obter sua localização');
+        return;
+      }
+
+      const location = await Location.getCurrentPositionAsync();
+      const { latitude, longitude } = location.coords; // coordenadas iniciais do usuário
+      
+      setInitialPosition([
+        latitude,
+        longitude
+      ])
     }
 
-    function handleNavigateToDetail() {
-        navigation.navigate('Detail');
+    loadPosition();
+  }, []);
+
+  /* PEGANDO OS ITENS DA API */
+  useEffect(() => {
+    api.get('items').then(response => {
+      //.then(response =>) = aguardar ela dar uma resposta e armazenar num estado
+      setItems(response.data);
+    })
+  }, []);
+
+  /* CARREGAR OS PONTOS DE COLETA */
+  useEffect(()=> {
+    api.get('points', {
+      // enviando os query parms
+      params: {
+        city: 'Santo André',
+        uf: 'SP',
+        items: [2]
+      }
+    }).then(response => { // assim que eu obtiver uma resposta dessa chamada salva na variavel points do estado
+      setPoints(response.data);
+    })
+  }, []);
+
+  // Se o item já está selecionado, ele deseleciona (igual a do front)
+  function handleSelectedItem(id: number) {
+    // usuario clica num item
+    const alreadySelected = selectedItems.findIndex(item => item === id); // retorna 0 se existir um item no array com esse id e -1 se não estiver
+
+    if (alreadySelected >= 0) { // se já existe (clicou num item selecionado) REMOVE DO ARRAY (item fica branco de novo)
+        const filteredItems = selectedItems.filter(item => item !== id);// filtra todos os itens pegando todos menos o que eu preciso remover
+
+        setSelectedItems(filteredItems);
+    } else { // ADICIONA NO ARRAY (item fica verde)
+        // se colocarmos apenas setSelectedId(id) sempre que clicasse num novo, então com spred aproveitamos o que já tem e adicionamos um novo
+        setSelectedItems([...selectedItems, id]);
     }
+  }
 
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <View style={styles.container}>
-                <TouchableOpacity onPress={handleNavigateBack}>
-                    <Icon name="arrow-left" size={20} color="#34cb79" />
-                </TouchableOpacity>
+  function handleNavigateToDetail(id: number) {
+    navigation.navigate('Detail', { point_id: id }); // tudo entre { } é passado como parâmetro para a rota (nesse caso estamos passando o id do ponto)
+  }
+  function handleNavigateBack() {
+      navigation.goBack(); // voltar pra página anterior
+  }
 
-                <Text style={styles.title}>Bem vindo.</Text>
-                <Text style={styles.description}>Encontre no mapa um ponto de coleta.</Text>
+  return (
+      <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.container}>
+              <TouchableOpacity onPress={handleNavigateBack}>
+                  <Icon name="arrow-left" size={20} color="#34cb79" />
+              </TouchableOpacity>
 
-                {/* BORDER-RADIUS SÓ FUNCIONA NAS VIEWS */}
-                <View style={styles.mapContainer}>
-                    <MapView 
-                        style={styles.map} 
-                        initialRegion={{ 
-                            latitude: -23.6649649,
-                            longitude: -46.6272067,
-                            latitudeDelta: 0.014, // zoom
-                            longitudeDelta: 0.014,
-                        }}>
-                            <Marker 
-                                style={styles.mapMarker}
-                                onPress={handleNavigateToDetail}
-                                coordinate={{
-                                    latitude: -23.6649649,
-                                    longitude: -46.6272067,
-                                }}
-                            >
-                                <View style={styles.mapMarkerContainer}>
-                                    <Image style={styles.mapMarkerImage} source={{ uri: 'https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60' }} />
-                                    <Text style={styles.mapMarkerTitle}>Mercado</Text>
-                                </View>
-                            </Marker>
-                    </MapView>
-                </View>
+              <Text style={styles.title}>Bem vindo.</Text>
+              <Text style={styles.description}>Encontre no mapa um ponto de coleta.</Text>
+
+              {/* BORDER-RADIUS SÓ FUNCIONA NAS VIEWS */}
+              <View style={styles.mapContainer}>
+                { /* 
+                  RENDERIZAÇÃO CONDICIONAL:
+                  if ternario: condicao ? true : false
+                  quando não temos o else do ternário conseguimos fazer em react native:
+                  condicao && codigoExecutadoSeCondicaoForTrue
+                  ja carregou a posição do usuário e eu posso mostrar o mapa */
+                  initialPosition[0] !== 0 && (
+                  <MapView 
+                    style={styles.map} 
+                    loadingEnabled={ initialPosition[0] == 0} // enquanto não conseguiu a localização do usuário (initialPosition[0] = 0), aparece sinal de loading
+                    initialRegion={{ 
+                        latitude: initialPosition[0],
+                        longitude: initialPosition[1],
+                        latitudeDelta: 0.014, // zoom
+                        longitudeDelta: 0.014,
+                  }}>
+                    {points.map(point => (
+                      <Marker 
+                        key={String(point.id)}
+                        style={styles.mapMarker}
+                        onPress={() => handleNavigateToDetail(point.id)} // sempre que a função recebe parâmetro coloca arrow function
+                        coordinate={{
+                            latitude: point.latitude,
+                            longitude: point.longitude,
+                        }}
+                      >
+                        <View style={styles.mapMarkerContainer}>
+                          <Image style={styles.mapMarkerImage} source={{ uri: point.image }} />
+                          <Text style={styles.mapMarkerTitle}>{point.name}</Text>
+                        </View>
+                    </Marker>
+                  ))}
+                </MapView>
+              ) }
             </View>
-            <View style={styles.itemsContainer}>
-                <ScrollView 
-                    horizontal // scroll
-                    showsHorizontalScrollIndicator={false} // remove scrollbar
-                    contentContainerStyle={{ paddingHorizontal: 20}} // entende como parte do conteudo (ocupamos espaço horizontal do lado)
-                >
-                    <TouchableOpacity style={styles.item} onPress={() => {}}>
-                        <SvgUri width={42} height={42} uri="http://192.168.15.15:3333/uploads/lampadas.svg" />
-                        <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </View>
+          <View style={styles.itemsContainer}>
+              <ScrollView 
+                  horizontal // scroll
+                  showsHorizontalScrollIndicator={false} // remove scrollbar
+                  contentContainerStyle={{ paddingHorizontal: 20}} // entende como parte do conteudo (ocupamos espaço horizontal do lado)
+              >
+                  {items.map( item => (// React Native espera que a key (elemento identificador do map) seja uma string
+                    <TouchableOpacity 
+                      key={String(item.id)} 
+                      style={[ // podemos passar um vetor de estilos no react native 
+                        styles.item,
+                        selectedItems.includes(item.id) ? styles.selectedItem : {}// se o item tiver sido selecionado (ta dentro de selectedItems) fica verde, se não passa vazio
+                      ]} 
+                      onPress={() => handleSelectedItem(item.id)} // não pode ser apenas {handleSelectedItem} pq precisamos enviar um id e se for {handleSelectedItem(item.id)} passariamos a execução da função como parâmetro (assim que o componente for exibido em tela essa função seria executada). Queremos passar a função como parâmetro = Solução: arrow function
+                      activeOpacity={0.6} //Ajustamos o touchable opacity pra controlar a opacidade
+                    >
+                      <SvgUri width={42} height={42} uri={item.image_url} />
+                      <Text style={styles.itemTitle}>{item.title}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.item} onPress={() => {}}>
-                        <SvgUri width={42} height={42} uri="http://192.168.15.15:3333/uploads/lampadas.svg" />
-                        <Text style={styles.itemTitle}>Lâmpadas</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.item} onPress={() => {}}>
-                        <SvgUri width={42} height={42} uri="http://192.168.15.15:3333/uploads/lampadas.svg" />
-                        <Text style={styles.itemTitle}>Lâmpadas</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.item} onPress={() => {}}>
-                        <SvgUri width={42} height={42} uri="http://192.168.15.15:3333/uploads/lampadas.svg" />
-                        <Text style={styles.itemTitle}>Lâmpadas</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.item} onPress={() => {}}>
-                        <SvgUri width={42} height={42} uri="http://192.168.15.15:3333/uploads/lampadas.svg" />
-                        <Text style={styles.itemTitle}>Lâmpadas</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.item} onPress={() => {}}>
-                        <SvgUri width={42} height={42} uri="http://192.168.15.15:3333/uploads/lampadas.svg" />
-                        <Text style={styles.itemTitle}>Lâmpadas</Text>
-                    </TouchableOpacity>
-                </ScrollView>
-            </View>
-        </SafeAreaView>
-    );
+                  ))}
+              </ScrollView>
+          </View>
+      </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
