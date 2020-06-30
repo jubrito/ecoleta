@@ -1,6 +1,6 @@
 import React , { useState, useEffect }from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute} from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Alert } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg';// carregar svg de um endereço externo 
@@ -23,6 +23,12 @@ interface Point {
   longitude: number;
 }
 
+// parâmetros sendo passados sobre o estado e cidade
+interface Params {
+  uf: string;
+  city: string;
+}
+
 const Points = () => {
 
   // ESTADO dos pontos de coletas buscados na API
@@ -38,6 +44,10 @@ const Points = () => {
   const [ initialPosition, setInitialPosition ] = useState<[number, number]>([0, 0]); // vetor de latitude e longitude (numeros)
 
   const navigation = useNavigation();
+
+  const route = useRoute(); // pegar parâmetros da rota
+
+  const routeParams = route.params as Params; // definindo como variável de parametro pra rota 
 
   /* DEFININDO O PONTO INICIAL DO MAPA COMO A LOCALIZAÇÃO DO USUÁRIO */
   useEffect(() => {
@@ -76,14 +86,14 @@ const Points = () => {
     api.get('points', {
       // enviando os query parms
       params: {
-        city: 'Santo André',
-        uf: 'SP',
-        items: [2]
+        city: routeParams.city,
+        uf: routeParams.uf,
+        items: selectedItems
       }
     }).then(response => { // assim que eu obtiver uma resposta dessa chamada salva na variavel points do estado
       setPoints(response.data);
     })
-  }, []);
+  }, [selectedItems]); // toda vez que selecionar os itens
 
   // Se o item já está selecionado, ele deseleciona (igual a do front)
   function handleSelectedItem(id: number) {

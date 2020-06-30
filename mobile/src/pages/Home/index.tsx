@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 // TouchableHighlight, Touchable: botões
 // npm install @react-navigation/nativeimageBackground: View que aceita background
-import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'; 
+// KeyboardAvoidingView: evita que o teclado fique por cima do campo (Platform necessaria pra condition apenas no IOS)
+import { View, Text, Image, ImageBackground, StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native'; 
 import { RectButton } from 'react-native-gesture-handler'; // botão retangular com cor de fundo
 import { Feather as Icon } from '@expo/vector-icons'; // Icones
 import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+  const [uf, setUf] = useState('');
+  const [city, setCity] = useState('');
   const navigation = useNavigation(); 
 
-  function handleNavigateToPoints() {
-    navigation.navigate('Points');  //navigation tem a função navigate pra navegarmos de uma tela pra outra e colocamos essa funçaõ no onePress do botão 
+  function handleNavigateToPoints() { //navigation tem a função navigate pra navegarmos de uma tela pra outra e colocamos essa funçaõ no onePress do botão 
+    navigation.navigate('Points', { // enviamos uf e city como parâmetro pra tela
+      uf,
+      city
+    });  
   }
 
     return (
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined }>
         <ImageBackground 
             source={require('../../assets/home-background.png')} 
             style={styles.container}
@@ -21,12 +28,34 @@ const Home = () => {
             imageStyle={{ width: 274, height: 368 }} // edita o estilo só na imagem, o styles.container é pro container
         >
             <View style={styles.main}>
-            <Image source={require('../../assets/logo.png')} />
-            <Text style={styles.title}>Seu marketplace de coleta de resíduos</Text>
-            <Text style ={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
+              <Image source={require('../../assets/logo.png')} />
+
+              {/* depois de colocarmos o KeyboardAvoidingView por volta os textos ficaram fixos entao colocamos View sem nada em volta */}
+              <View>
+                <Text style={styles.title}>Seu marketplace de coleta de resíduos</Text>
+                <Text style ={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
+              </View>
             </View>
 
             <View style={styles.footer}>
+              <TextInput 
+                style={styles.input} 
+                placeholder="Digite a UF"
+                value={uf}
+                maxLength={2}
+                autoCapitalize="characters" // todos os caracteres em capslock
+                autoCorrect={false} // não tenta corrigir texto digitado
+                onChangeText={setUf} // onChangeText: recebemos o texto digitado (text => setUf(text)) como só tem um parâmetro pode colocar apenas o nome da função
+              />
+
+              <TextInput 
+                style={styles.input} 
+                placeholder="Digite a cidade" 
+                value={city}
+                autoCorrect={false}
+                onChangeText={setCity}
+              />
+
               <RectButton style={styles.button} onPress={handleNavigateToPoints} /* onPress = onClick*/> 
                 <View style ={styles.buttonIcon}>
                   <Text>
@@ -39,6 +68,7 @@ const Home = () => {
               </RectButton>
             </View>
         </ImageBackground>
+      </KeyboardAvoidingView>
     );
 };
 
@@ -74,7 +104,7 @@ const styles = StyleSheet.create({
   
     footer: {},
   
-    select: {},
+    select: {},   
   
     input: {
       height: 60,
