@@ -28,7 +28,16 @@ class PointsController {
         .distinct()
         .select('points.*') 
 
-        return response.json(points);
+        // SERIALIZAÇÃO para permitir que o mobile acesse a imagem com o caminho 
+        const serializedPoints = points.map(point => {
+            // MAP: percorre os points e retorna da maneira que você quiser
+            return {
+                ...point, // retornar todos os dados do ponto
+                image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
+            };
+        });
+
+        return response.json(serializedPoints);
     }
 
 
@@ -44,6 +53,12 @@ class PointsController {
             return response.status(400).json({ message: 'Point not found.'}); // status code que começa com 4 significa erro
         }
 
+        // SERIALIZAÇÃO para permitir que o mobile acesse a imagem com o caminho 
+        const serializedPoint = {
+            ...point, // retornar todos os dados do ponto
+            image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
+        };
+
         // No mobile quando listarmos um ponto de coleta, precisamos dos itens que ele coleta
         
         /* ~ Listar todos os itens relacionados a esse ponto de coleta ~ 
@@ -57,7 +72,7 @@ class PointsController {
         .where('point_items.point_id', id)
         .select('items.title');
 
-        return response.json({ point, items });
+        return response.json({ point: serializedPoint, items }); // por causa da serialização agora retornamos point como sendo serializedPoint
     }
 
     /* ~ Criar Pontos de Coleta ~ */
@@ -83,7 +98,7 @@ class PointsController {
         // retorna os ids dos dados inseridos
         // (1.) INSERÇÃO DOS PONTOS
         const point = {
-            image: 'https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
+            image: request.file.filename, // pegamos o arquivo recebido no upload pelo multer
             name,
             email, 
             whatsapp,
@@ -97,9 +112,18 @@ class PointsController {
     
         /* RELACIONAMENTO COM A TABELA DE ITENS ------------------
             items é um array de numeros equivalente a cada item
-            item_id virou (item_id: number) pq o typescript reclamou que o item_id nao tinha tipo pre definido */
+            item_id virou (item_id: number) pq o typescript reclamou que o item_id nao tinha tipo pre definido 
+            
+            Ao invés de apenas "const pointItems = items.map((item_id: number )=> {"
+            agora que convertemos a criaçãod o ponto no insomnia de JSON para Multipart para aceitar arquivos,
+            fazemos um split e um map+trim para remover virgulas e espaços 
+            ao inves de Number na hora de converter pra numero poderia ser parseInt ou apenas colocarmos
+            (item: string )=> +item.trim()) tbm converteria pra numero*/
         const point_id = insertedIds[0];
-        const pointItems = items.map((item_id: number )=> {
+        const pointItems = items
+            .split(',')
+            .map((item: string )=> Number(item.trim()))
+            .map((item_id: number )=> {
             return {
                 item_id,
                 point_id,

@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json()); 
 app.use(routes);
 
-// STATIC: funcao para servir arquivos estaticos (downloads de imagem, pdf, word)
+// STATIC: funcao para servir arquivos estaticos (downloads de imagem, pdf, word) direto pro cliente
 app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 
 app.listen(3333);

@@ -19,6 +19,7 @@ interface Point {
   id: number;
   name: string;
   image: string;
+  image_url: string; // além do img, agora com a função de uploads tbm recebemos o image_url que é a url criada com o IP / o nome da imagem 
   latitude: number;
   longitude: number;
 }
@@ -156,7 +157,7 @@ const Points = () => {
                         }}
                       >
                         <View style={styles.mapMarkerContainer}>
-                          <Image style={styles.mapMarkerImage} source={{ uri: point.image }} />
+                          <Image style={styles.mapMarkerImage} source={{ uri: point.image_url }} />
                           <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                         </View>
                     </Marker>
