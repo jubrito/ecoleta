@@ -15,6 +15,8 @@ import axios from 'axios';
 
 import { LeafletMouseEvent } from 'leaflet';
 
+import Dropzone from '../../components/Dropzone';
+
 // FIELDSET: Conjunto de campos, LEGEND: legenda do fieldset
 // SELECT:  impedir que a cidade não condiza com o estado e uf OU city que não sejam validos
 
@@ -81,6 +83,9 @@ const CreatePoint = () => {
         email: '',
         whatsapp: '',
     });
+
+    // Arquivo enviado no upload no dropzone (Armazena informação do tipo File (objeto global do javascript) )
+    const [selectedFile, setSelectedFile] = useState<File>();
 
     const history = useHistory(); // redirecionar o usuário depois do ponto de coleta para a tela inicial
 
@@ -219,6 +224,9 @@ const CreatePoint = () => {
 
             <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br />ponto de coleta</h1>
+
+                {<Dropzone />}
+                {/* <Dropzone onFileUploaded={setSelectedFile}/> */}
 
                 {/* ----- DADOS ----- */}
                 <fieldset>
