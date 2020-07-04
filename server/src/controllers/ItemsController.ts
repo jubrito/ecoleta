@@ -17,7 +17,8 @@ class ItemsController {
                 // Para rodarmos na nossa máquina
                 // image_url: `http://localhost:3333/uploads/${item.image}`,
                 // Para rodarmos no Expo (Mobile), pegamos o link gerado no localhost:19002 do expo (exp://192.168.15.15:19000)
-                image_url: `http://192.168.15.15:3333/uploads/${item.image}`,
+                // image_url: `http://192.168.15.15:3333/uploads/${item.image}`,
+                image_url: `http://192.168.15.51:3333/uploads/${item.image}`,
             };
         });
     

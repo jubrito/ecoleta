@@ -33,7 +33,8 @@ class PointsController {
             // MAP: percorre os points e retorna da maneira que você quiser
             return {
                 ...point, // retornar todos os dados do ponto
-                image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
+                // image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
+                image_url: `http://192.168.15.51:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
             };
         });
 
@@ -56,7 +57,8 @@ class PointsController {
         // SERIALIZAÇÃO para permitir que o mobile acesse a imagem com o caminho 
         const serializedPoint = {
             ...point, // retornar todos os dados do ponto
-            image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
+            // image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
+            image_url: `http://192.168.15.51:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
         };
 
         // No mobile quando listarmos um ponto de coleta, precisamos dos itens que ele coleta
@@ -98,6 +100,7 @@ class PointsController {
         // retorna os ids dos dados inseridos
         // (1.) INSERÇÃO DOS PONTOS
         const point = {
+            // image: request.file.filename, // pegamos o arquivo recebido no upload pelo multer
             image: request.file.filename, // pegamos o arquivo recebido no upload pelo multer
             name,
             email, 
