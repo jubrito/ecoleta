@@ -41,13 +41,15 @@ routes.post(
             longitude: Joi.number().required(),
             city: Joi.string().required(),
             uf: Joi.string().required().max(2),
-            items: Joi.string().regex(/^[\s,\d+!]+$/).required(), 
+            items: Joi.string().regex(/^[\s,\d+]+$/).required(), 
             /* REGEX: validação para receber numeros entre virgulas e espaços 
                 / /: expressão regular
+                \d: checa números
+                \s: checa espaços
+                ,: chega virgula
+                +: o que vier imediatamente antes dele deve aparecer 1 ou mais vezes; o mesmo que {1,}
                 ^: checa desde o inicio
                 $: checa a partir do final
-                \d: checa números
-                +: o que vier imediatamente antes dele deve aparecer 1 ou mais vezes; o mesmo que {1,}
                 ?: o que vier imediatamente antes dele deve aparecer 0 ou 1 vez na expressão.
                 */
             //imagem não validamos pelo joi mas sim pelo file filter no multer

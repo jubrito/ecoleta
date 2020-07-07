@@ -56,8 +56,7 @@ class PointsController {
         // SERIALIZAÇÃO para permitir que o mobile acesse a imagem com o caminho 
         const serializedPoint = {
             ...point, // retornar todos os dados do ponto
-            // image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
-            image_url: `http://192.168.15.51:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
+            image_url: `http://192.168.15.73:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
         };
 
         // No mobile quando listarmos um ponto de coleta, precisamos dos itens que ele coleta
