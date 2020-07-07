@@ -33,8 +33,7 @@ class PointsController {
             // MAP: percorre os points e retorna da maneira que você quiser
             return {
                 ...point, // retornar todos os dados do ponto
-                // image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
-                image_url: `http://192.168.15.51:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
+                image_url: `http://192.168.15.73:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
             };
         });
 

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes'; //arquivo da aplicação na mesma pasta do server (./)
 import path from 'path';
+import { errors } from 'celebrate';
 
 const app = express();
 
@@ -17,6 +18,9 @@ app.use(routes);
 
 // STATIC: funcao para servir arquivos estaticos (downloads de imagem, pdf, word) direto pro cliente
 app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
+
+// Lidar automaticamente para retornarmos erros para o front
+app.use(errors());
 
 app.listen(3333);
 
