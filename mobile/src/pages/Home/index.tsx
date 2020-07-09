@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // TouchableHighlight, Touchable: botões
 // npm install @react-navigation/nativeimageBackground: View que aceita background
 // KeyboardAvoidingView: evita que o teclado fique por cima do campo (Platform necessaria pra condition apenas no IOS)
@@ -6,11 +6,20 @@ import { View, Text, Image, ImageBackground, StyleSheet, TextInput, KeyboardAvoi
 import { RectButton } from 'react-native-gesture-handler'; // botão retangular com cor de fundo
 import { Feather as Icon } from '@expo/vector-icons'; // Icones
 import { useNavigation } from '@react-navigation/native';
+import Dropdown from '../../Dropdown';
+
+interface IBGEuf {
+  sigla: string;
+}
 
 const Home = () => {
   const [uf, setUf] = useState('');
   const [city, setCity] = useState('');
   const navigation = useNavigation(); 
+
+  async function fetchSearchIBGE() {
+    
+   }
 
   function handleNavigateToPoints() { //navigation tem a função navigate pra navegarmos de uma tela pra outra e colocamos essa funçaõ no onePress do botão 
     navigation.navigate('Points', { // enviamos uf e city como parâmetro pra tela
@@ -36,7 +45,9 @@ const Home = () => {
                 <Text style ={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
               </View>
             </View>
-
+            <View style={styles.input}>
+              <Dropdown/>
+            </View>
             <View style={styles.footer}>
               <TextInput 
                 style={styles.input} 
@@ -113,6 +124,8 @@ const styles = StyleSheet.create({
       marginBottom: 8,
       paddingHorizontal: 24,
       fontSize: 16,
+      justifyContent: 'center',
+      alignItems: 'center', 
     },
   
     button: {
