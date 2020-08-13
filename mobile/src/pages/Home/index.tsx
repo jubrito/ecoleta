@@ -6,7 +6,7 @@ import { View, Text, Image, ImageBackground, StyleSheet, TextInput, KeyboardAvoi
 import { RectButton } from 'react-native-gesture-handler'; // botão retangular com cor de fundo
 import { Feather as Icon } from '@expo/vector-icons'; // Icones
 import { useNavigation } from '@react-navigation/native';
-import Dropdown from '../../Dropdown';
+// import Dropdown from '../../Dropdown';
 
 interface IBGEuf {
   sigla: string;
@@ -46,7 +46,7 @@ const Home = () => {
               </View>
             </View>
             <View style={styles.input}>
-              <Dropdown/>
+              {/* <Dropdown/> */}
             </View>
             <View style={styles.footer}>
               <TextInput 
