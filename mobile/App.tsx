@@ -1,6 +1,5 @@
 import React from 'react';
 import { AppLoading } from 'expo'; // sinal de carregamento do app
-
 import { StatusBar } from 'react-native';
 
 import Routes from './src/routes';

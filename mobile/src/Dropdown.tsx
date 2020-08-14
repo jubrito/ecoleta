@@ -4,7 +4,7 @@ import RNPickerSelect from 'react-native-picker-select'; // Reproduzir o select 
 interface IBGEResponse {
     sigla: string,
 }
-    
+     
 interface Item {
     label: string,
     value: string,

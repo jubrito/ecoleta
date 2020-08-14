@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import knex from '../database/connection';
+import { IPAddress } from '../../../UserIPAddress';
 
 /* Como tiramos isso do arquivo de rotas Não temos mais a identificação do formato do request e do response 
 Parameter 'request' has any tipe: precisamos informar manualmente (importamos Request e Response e informamos que request: Request (request é do tipo request) */
@@ -33,7 +34,8 @@ class PointsController {
             // MAP: percorre os points e retorna da maneira que você quiser
             return {
                 ...point, // retornar todos os dados do ponto
-                image_url: `http://192.168.15.73:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
+                // image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
+                image_url: `http://${IPAddress}:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile que precisa disso já que nao consegue usar apenas o nome da imagem salva em uploads que é um nome com hash
             };
         });
 
@@ -56,7 +58,8 @@ class PointsController {
         // SERIALIZAÇÃO para permitir que o mobile acesse a imagem com o caminho 
         const serializedPoint = {
             ...point, // retornar todos os dados do ponto
-            image_url: `http://192.168.15.73:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
+            // image_url: `http://192.168.15.15:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
+            image_url: `http://${IPAddress}:3333/uploads/${point.image}`, //adicionar o campo image_url com o endereço correto pro mobile (igual ao feito no método index)
         };
 
         // No mobile quando listarmos um ponto de coleta, precisamos dos itens que ele coleta

@@ -45,9 +45,9 @@ const Home = () => {
                 <Text style ={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
               </View>
             </View>
-            <View style={styles.input}>
+            {/* <View style={styles.input}>
               <Dropdown/>
-            </View>
+            </View> */}
             <View style={styles.footer}>
               <TextInput 
                 style={styles.input} 
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     main: {
       flex: 1,
       justifyContent: 'center',
+      marginBottom: 15,
     },
   
     title: {
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
       fontSize: 32,
       fontFamily: 'Ubuntu_700Bold',
       maxWidth: 260,
-      marginTop: 64,
+      marginTop: 20,
     },
   
     description: {

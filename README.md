@@ -18,55 +18,48 @@
   <a href="#page_facing_up-licença">Licença</a>
 </p>
 
-
-![](ecoleta.gif?raw=true "Visualização da aplicação web")
-
-
-<h4 align="center"> 
-	Em construção :rocket:
-</h4>
-
+<div align="center">
+  <img alt="Aplicação Web" src="./ecoleta-web.gif">
+  </br></br>
+  <img alt="Aplicação Mobile" src="./ecoleta-mobile.gif">
+</div>
 
 ## **:computer: TECNOLOGIAS**
 
 #### **FRONT-END** ([React](https://pt-br.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/))
 
-  - [Axios](https://github.com/axios/axios)
-  - [React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
-  - [React Icons](https://react-icons.github.io/react-icons/)
-  - [React Leaflet](https://react-leaflet.js.org/en/)
-  - [Leaflet](https://react-leaflet.js.org/en/)
-  <!-- - **[React Dropzone][react_dropzone]** -->
+  - **[Axios](https://github.com/axios/axios):** requisições pro back-end
+  - **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom):** sistema de roteamento para troca de páginas
+  - **[React Leaflet](https://react-leaflet.js.org/en/)** e **[Leaflet](https://react-leaflet.js.org/en/):** integração de mapas com o projeto
+  - **[React Dropzone](https://github.com/react-dropzone/react-dropzone):** “caixa” para upload de arquivos
+  - **[React Icons](https://react-icons.github.io/react-icons/):** fontes de ícones famosas
    <kbd>[package.json](./web/package.json)</kbd>
 
 
 #### **BACK-END** ([NodeJS](https://nodejs.org/en/) + [TypeScript](https://www.typescriptlang.org/))
 
-  - **[SQLite3](https://github.com/mapbox/node-sqlite3)**
-  - **[Ts-node](https://github.com/TypeStrong/ts-node)**
-  - **[KnexJS](http://knexjs.org/)**
-  - **[Express](https://expressjs.com/)**
-  - **[CORS](https://expressjs.com/en/resources/middleware/cors.html)**
-  <!-- - **[dotENV][dotenv]** -->
-  <!-- - **[Multer][multer]** -->
-  <!-- - **[Celebrate][celebrate]** -->
-  <!-- - **[Joi][joi]** -->
+  - **[SQLite3](https://github.com/mapbox/node-sqlite3):** banco de dados SQL embutido
+  - **[Ts-node](https://github.com/TypeStrong/ts-node):** compreensão do TypeScript pelo Node
+  - **[KnexJS](http://knexjs.org/):** banco de dados SQL com linguagem unificada para todos os bancos
+  - **[Express](https://expressjs.com/):** micro framework para lidar com rotas
+  - **[CORS](https://expressjs.com/en/resources/middleware/cors.html):** definição na API de quais endereços externos (URL web) vão ter acesso a aplicação
+  - **[Multer](https://github.com/expressjs/multer):** extensão para upload de imagens
+  - **[Celebrate](https://github.com/arb/celebrate):** validação de entrada de dados integrada com express através do @hapi/Joy 
+  - **[Joi](https://github.com/hapijs/joi):** intelisense com TypeScript do celebrate
+
   <kbd>[package.json](./server/package.json)</kbd>
 
 #### **MOBILE** ([React Native](https://reactnative.dev/) + [TypeScript](https://www.typescriptlang.org/))
 
 Em construção :rocket:
-  <!-- - **[Expo][expo]**
-  - **[Expo Google Fonts][expo_google_fonts]**
-  - **[React Navigation][react_navigation]**
-  - **[React Native Maps][react_native_maps]**
-  - **[Expo Constants][expo_constants]**
-  - **[React Native SVG][react_native_svg]**
-  - **[Axios][axios]**
-  - **[Expo Location][expo_location]**
-  - **[Expo Mail Composer][expo_mail_composer]**
+  - **[Expo](https://expo.io/):** plataforma para criação de aplicativos nativos universais para Android e iOS
+  - **[Axios](https://github.com/axios/axios):** cliente http para requisições a API
+  - **[React Navigation](https://reactnavigation.org/):** navegação entre rotas e botões
+  - **[React Native Maps](https://github.com/react-native-community/react-native-maps):** extensão para utilização de mapas
+  - **[React Native SVG](https://github.com/react-native-community/react-native-svg):** componente para svgs e vetores
+  - **[Expo Location](https://docs.expo.io/versions/latest/sdk/location/)**, **[Expo Mail Composer](https://docs.expo.io/versions/latest/sdk/mail-composer/)** e **[Expo Google Fonts](https://github.com/expo/google-fonts):** acesso a geolocalização do usuário como ponto inicial no mapa, ao envio de e-mails e a fontes do google
 
-  \* <kbd>[package.json](./sources/mobile/package.json)</kbd> -->
+  <kbd>[package.json](./mobile/package.json)</kbd>
 
 
 ## **:hammer: FERRAMENTAS**
@@ -78,16 +71,16 @@ Em construção :rocket:
 - Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**, **[Ubuntu](https://fonts.google.com/specimen/Ubuntu)**
 - Maps: **[Leaflet](https://react-leaflet.js.org/en/)**
 - Editor: **[Visual Studio Code](https://code.visualstudio.com/)** &rarr; Extensions: **<kbd>[SQLite3](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)</kbd>**
-<!-- - Markdown: **[StackEdit][stackedit]**, **<kbd>[Markdown Emoji][markdown_emoji]</kbd>**
-- Commit Conventional: **[Commitlint][commitlint]** -->
 
 
-
-## **:woman_technologist: RODANDO A APLICAÇÃO**
+## **:woman_technologist: RODANDO A APLICAÇÃO** 
 
 Requisitos: [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), Editor ([VSCode](https://code.visualstudio.com/))
 
 ```sh
+# Encontre o seu endereço IPv4 
+$ ipconfig
+
 # Clone este repositório
 $ git clone https://github.com/jubrito/ecoleta
 
@@ -95,6 +88,8 @@ $ git clone https://github.com/jubrito/ecoleta
 $ cd ecoleta
 
 ```
+
+Altere a constante *IPAddress do arquivo* <kbd>[UserIPAddress.ts](./UserIPAddress.ts)</kbd> no diretório raíz **substituindo o endereço de IPv4 exemplo para o da sua máquina**.
 
 ### Server (Back-end)
 
@@ -106,7 +101,7 @@ $ cd server
 $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run dev:server
+$ npm run dev
 ```
 
 Acesse [http://localhost:3333](http://localhost:3333) (o servidor inciará na porta:3333)  
@@ -139,8 +134,26 @@ Acesse [http://localhost:3000](http://localhost:3000) - (a aplicação será abe
 
 ### Mobile 
 
-Em construção
+Instale o aplicativo **<kbd>[Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)</kbd>** no seu celular
 
+Instale globalmente a dependência **Expo-cli**
+
+```sh
+# Executar comandos do Expo pelo terminal:
+$ npm install -g expo-cli 
+
+# Acesse a pasta do mobile no cmd/terminal
+$ cd mobile
+```
+
+Altere a constante *IPAddress* do arquivo <kbd>[api.ts](./mobile/src/services/api.ts)</kbd> em mobile **substituindo o endereço de IPv4 exemplo para o da sua máquina.**
+
+```sh
+# Execute o em modo de desenvolvimento:
+$ npm run start
+```
+
+Abra o aplicativo do Expo no modo **LAN**, faça o scan do QRCode e abra o projeto no seu smartphone.
 
 
 ## **:octocat: COMO CONTRIBUIR**
