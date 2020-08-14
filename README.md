@@ -21,7 +21,7 @@
 <div align="center">
   <img alt="Aplicação Web" src="./ecoleta-web.gif">
   </br></br>
-  <img alt="Aplicação Mobile" src="./ecoleta-mobile.gif">
+  <img alt="Aplicação Mobile" src="./ecoleta-mobile.gif" width="300">
 </div>
 
 ## **:computer: TECNOLOGIAS**
@@ -51,7 +51,6 @@
 
 #### **MOBILE** ([React Native](https://reactnative.dev/) + [TypeScript](https://www.typescriptlang.org/))
 
-Em construção :rocket:
   - **[Expo](https://expo.io/):** plataforma para criação de aplicativos nativos universais para Android e iOS
   - **[Axios](https://github.com/axios/axios):** cliente http para requisições a API
   - **[React Navigation](https://reactnavigation.org/):** navegação entre rotas e botões
