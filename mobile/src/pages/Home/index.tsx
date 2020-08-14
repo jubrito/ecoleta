@@ -6,7 +6,7 @@ import { View, Text, Image, ImageBackground, StyleSheet, TextInput, KeyboardAvoi
 import { RectButton } from 'react-native-gesture-handler'; // botão retangular com cor de fundo
 import { Feather as Icon } from '@expo/vector-icons'; // Icones
 import { useNavigation } from '@react-navigation/native';
-import Dropdown from '../../Dropdown';
+// import Dropdown from '../../Dropdown';
 
 interface IBGEuf {
   sigla: string;
@@ -16,10 +16,6 @@ const Home = () => {
   const [uf, setUf] = useState('');
   const [city, setCity] = useState('');
   const navigation = useNavigation(); 
-
-  async function fetchSearchIBGE() {
-    
-   }
 
   function handleNavigateToPoints() { //navigation tem a função navigate pra navegarmos de uma tela pra outra e colocamos essa funçaõ no onePress do botão 
     navigation.navigate('Points', { // enviamos uf e city como parâmetro pra tela
