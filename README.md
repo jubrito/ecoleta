@@ -33,7 +33,8 @@
   - **[React Leaflet](https://react-leaflet.js.org/en/)** e **[Leaflet](https://react-leaflet.js.org/en/):** integração de mapas com o projeto
   - **[React Dropzone](https://github.com/react-dropzone/react-dropzone):** “caixa” para upload de arquivos
   - **[React Icons](https://react-icons.github.io/react-icons/):** fontes de ícones famosas
-   <kbd>[package.json](./web/package.json)</kbd>
+  
+  <kbd>[package.json](./web/package.json)</kbd>
 
 
 #### **BACK-END** ([NodeJS](https://nodejs.org/en/) + [TypeScript](https://www.typescriptlang.org/))
