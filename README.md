@@ -173,4 +173,4 @@ Abra o aplicativo do Expo no modo **LAN**, faça o scan do QRCode e abra o proje
 ## **:page_facing_up: LICENÇA**
 Licença MIT &rarr; **<kbd>[LICENSE](https://github.com/Rocketseat/nlw-01-booster/blob/master/LICENSE.md)</kbd>**
 
-Projeto Open Source desenvolvido Desenvolvido durante a NLW - Next Level Week, [RocketSeat](https://rocketseat.com.br/)
+Projeto Open Source desenvolvido durante a NLW - Next Level Week, [RocketSeat](https://rocketseat.com.br/)
